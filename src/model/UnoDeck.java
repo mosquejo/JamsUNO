@@ -3,11 +3,11 @@ package model;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Deck {
+public class UnoDeck {
     
     private final ArrayList<UnoCard> deck = new ArrayList<>();
 
-    public Deck() {
+    public UnoDeck() {
         for(int i = 0; i < 2; i++) {
 
             for (UnoCardColour colour : UnoCardColour.values()) {

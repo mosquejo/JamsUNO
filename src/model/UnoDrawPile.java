@@ -3,15 +3,15 @@ package model;
 
 import java.util.Stack;
 
-public class DrawPile {
+public class UnoDrawPile {
     
     private Stack<UnoCard> drawPile;
 
-    public DrawPile() {
+    public UnoDrawPile() {
         drawPile = new Stack<>();
     }
     
-    public DrawPile(Deck deck){
+    public UnoDrawPile(UnoDeck deck){
         drawPile = new Stack<>();
         while (!deck.getDeck().isEmpty()) {
             UnoCard tempCard = (UnoCard)deck.getDeck().remove(deck.getDeck().size()-1);
@@ -31,7 +31,7 @@ public class DrawPile {
         return drawPile;
     }
     
-    public UnoCard drawCard(DiscardPile discardPile){
+    public UnoCard drawCard(UnoDiscardPile discardPile){
         if(drawPile.isEmpty()){
             UnoCard card = discardPile.drawCard();
             discardPile.shuffle();

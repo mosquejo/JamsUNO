@@ -45,7 +45,7 @@ public class Test_Deck {
     @Test
     public void testNewDeck() {
         System.out.println("createDeck");
-        Deck instance = new Deck();
+        UnoDeck instance = new UnoDeck();
         assertEquals(instance.getDeck().size(), 108);
     }
     
@@ -56,7 +56,7 @@ public class Test_Deck {
     @Test
     public void testShuffle() {
         System.out.println("shuffle");
-        Deck instance = new Deck();
+        UnoDeck instance = new UnoDeck();
         instance.shuffle();
         assertEquals(instance.getDeck().size(), 108);
     }
@@ -67,7 +67,7 @@ public class Test_Deck {
     @Test
     public void testDealCard() {
         System.out.println("dealCard");
-        Deck instance = new Deck();
+        UnoDeck instance = new UnoDeck();
         UnoCard result = instance.dealCard();
         assertEquals(instance.getDeck().size(), 107);
     }
@@ -78,7 +78,7 @@ public class Test_Deck {
     @Test
     public void testClear() {
         System.out.println("clear");
-        Deck instance = new Deck();
+        UnoDeck instance = new UnoDeck();
         instance.clear();
         assertEquals(instance.getDeck().size(), 0);
     }

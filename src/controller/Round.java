@@ -4,17 +4,17 @@ import java.util.Collections;
 import model.UnoCard;
 import model.UnoCardColour;
 import model.UnoCardValue;
-import model.Deck;
-import model.DiscardPile;
-import model.DrawPile;
+import model.UnoDeck;
+import model.UnoDiscardPile;
+import model.UnoDrawPile;
 import model.Player;
 
 public class Round {
 
     private MyLinkedList<Player> playerList;
-    private Deck deck = new Deck();
-    private DiscardPile discardPile;
-    private DrawPile drawPile;
+    private UnoDeck deck = new UnoDeck();
+    private UnoDiscardPile discardPile;
+    private UnoDrawPile drawPile;
     private boolean continuePlaying;
     private UnoCardColour wildColour;          // to define the Colour when a Wild card is played.
 
@@ -62,23 +62,23 @@ public class Round {
     }
 
     public void createDiscardPile() {
-        discardPile = new DiscardPile();
+        discardPile = new UnoDiscardPile();
         discardPile.addCard(drawPile.drawCard(discardPile));
     }
 
     public void createDrawPile() {
-        drawPile = new DrawPile(this.deck);
+        drawPile = new UnoDrawPile(this.deck);
     }
 
     public UnoCard showDrawCard() {
         return discardPile.peekCard();
     }
 
-    public DiscardPile getDiscardPile() {
+    public UnoDiscardPile getDiscardPile() {
         return this.discardPile;
     }
 
-    public DrawPile getDrawPile() {
+    public UnoDrawPile getDrawPile() {
         return this.drawPile;
     }
 

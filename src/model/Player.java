@@ -64,12 +64,12 @@ public class Player {
     }
     
     //TODO: cohesion -- verificar esta funcion. 
-    public void play(int cardSelection, DiscardPile discardPile){
+    public void play(int cardSelection, UnoDiscardPile discardPile){
          discardPile.addCard(playerCards.remove(cardSelection-1));
     }
     
     //TODO: cohesion -- verificar esta funcion. 
-    public void play(UnoCard card, DiscardPile discardPile){
+    public void play(UnoCard card, UnoDiscardPile discardPile){
         discardPile.addCard(playerCards.remove(playerCards.indexOf(card)));
     }
 

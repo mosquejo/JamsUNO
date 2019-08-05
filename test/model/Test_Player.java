@@ -75,7 +75,7 @@ public class Test_Player {
     public void testPlay_int_DiscardPile() {
         System.out.println("playCard int to DiscardPile");
         Player player = new Player("player1", "user");
-        DiscardPile discardPile = new DiscardPile();
+        UnoDiscardPile discardPile = new UnoDiscardPile();
         UnoCard card1 = new UnoCard(UnoCardColour.BLUE, UnoCardValue.ONE);
         UnoCard card2 = new UnoCard(UnoCardColour.BLUE, UnoCardValue.TWO);
         player.receiveCard(card1);
@@ -93,7 +93,7 @@ public class Test_Player {
     public void testPlay_Card_DiscardPile() {
         System.out.println("playCard to DiscardPile");
         Player player = new Player("player1", "user");
-        DiscardPile discardPile = new DiscardPile();
+        UnoDiscardPile discardPile = new UnoDiscardPile();
         UnoCard card1 = new UnoCard(UnoCardColour.BLUE, UnoCardValue.ONE);
         UnoCard card2 = new UnoCard(UnoCardColour.BLUE, UnoCardValue.TWO);
         player.receiveCard(card1);

@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import model.UnoCard;
 import model.UnoCardColour;
-import model.DiscardPile;
-import model.DrawPile;
+import model.UnoDiscardPile;
+import model.UnoDrawPile;
 import model.Player;
 
 public class Tester {
@@ -61,8 +61,8 @@ public class Tester {
         Player player = round.getCurrentPlayer();
         UnoCard drawCard = round.showDrawCard();
         UnoCardColour wildColour = round.getWildColour();
-        DrawPile drawPile = round.getDrawPile();
-        DiscardPile discardPile = round.getDiscardPile();
+        UnoDrawPile drawPile = round.getDrawPile();
+        UnoDiscardPile discardPile = round.getDiscardPile();
 
         boolean result = false;
 

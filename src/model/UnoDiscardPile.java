@@ -3,11 +3,11 @@ package model;
 import java.util.Collections;
 import java.util.Stack;
 
-public class DiscardPile {
+public class UnoDiscardPile {
     
     private Stack<UnoCard> discardPile;
 
-    public DiscardPile(Deck deck) {
+    public UnoDiscardPile(UnoDeck deck) {
         discardPile = new Stack<>();
         while (!deck.getDeck().isEmpty()) {
             UnoCard tempCard = (UnoCard)deck.getDeck().remove(deck.getDeck().size()-1);
@@ -15,7 +15,7 @@ public class DiscardPile {
         }
     }
     
-    public DiscardPile() {
+    public UnoDiscardPile() {
         discardPile = new Stack<>();
         
     }
