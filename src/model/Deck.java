@@ -5,18 +5,18 @@ import java.util.Collections;
 
 public class Deck {
     
-    private final ArrayList<Card> deck = new ArrayList<>();
+    private final ArrayList<UnoCard> deck = new ArrayList<>();
 
     public Deck() {
         for(int i = 0; i < 2; i++) {
 
-            for (CardColour colour : CardColour.values()) {
-                for (CardValue value : CardValue.values()) {
-                    if (colour == CardColour.WILD || colour == CardColour.WILD_FOUR) { }
+            for (UnoCardColour colour : UnoCardColour.values()) {
+                for (UnoCardValue value : UnoCardValue.values()) {
+                    if (colour == UnoCardColour.WILD || colour == UnoCardColour.WILD_FOUR) { }
                     else {
-                        if(i==1 && value == CardValue.ZERO) {}
+                        if(i==1 && value == UnoCardValue.ZERO) {}
                         else{
-                            deck.add(new Card(colour, value));
+                            deck.add(new UnoCard(colour, value));
                         }
                     }
                 }
@@ -25,16 +25,16 @@ public class Deck {
 
 
         for(int i = 0; i < 4; i++) {
-            deck.add(new Card(CardColour.WILD,CardValue.ONE));
-            deck.add(new Card(CardColour.WILD_FOUR,CardValue.ONE));
+            deck.add(new UnoCard(UnoCardColour.WILD,UnoCardValue.ONE));
+            deck.add(new UnoCard(UnoCardColour.WILD_FOUR,UnoCardValue.ONE));
         }
     }
 
-    public Card getCard() {
+    public UnoCard getCard() {
         return deck.get(0);
     }
 
-    public Card getCard(int index) {
+    public UnoCard getCard(int index) {
         return deck.get(index);
     }
 
@@ -42,7 +42,7 @@ public class Deck {
         Collections.shuffle(this.deck);
     }
 
-    public Card dealCard() {
+    public UnoCard dealCard() {
         
         return deck.remove(0);
     }

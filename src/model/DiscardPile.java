@@ -5,12 +5,12 @@ import java.util.Stack;
 
 public class DiscardPile {
     
-    private Stack<Card> discardPile;
+    private Stack<UnoCard> discardPile;
 
     public DiscardPile(Deck deck) {
         discardPile = new Stack<>();
         while (!deck.getDeck().isEmpty()) {
-            Card tempCard = (Card)deck.getDeck().remove(deck.getDeck().size()-1);
+            UnoCard tempCard = (UnoCard)deck.getDeck().remove(deck.getDeck().size()-1);
             discardPile.add(tempCard);
         }
     }
@@ -20,19 +20,19 @@ public class DiscardPile {
         
     }
 
-    public Card drawCard() {
+    public UnoCard drawCard() {
         return discardPile.pop();
     }
 
-    public Stack<Card> getDiscardPile() {
+    public Stack<UnoCard> getDiscardPile() {
         return discardPile;
     }
     
-    public void addCard(Card card){
+    public void addCard(UnoCard card){
         discardPile.push(card);
     }
     
-    public Card peekCard(){
+    public UnoCard peekCard(){
         return discardPile.peek();
     }
     

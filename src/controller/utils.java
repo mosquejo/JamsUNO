@@ -2,19 +2,19 @@
 package controller;
 
 import java.util.Scanner;
-import model.Card;
-import model.CardColour;
+import model.UnoCard;
+import model.UnoCardColour;
 import model.Player;
 
 public class utils {
     
-    public static void cardSelectionIsValid(Card cardSelection, Card drawCard, CardColour wildColour ) throws Exception {
+    public static void cardSelectionIsValid(UnoCard cardSelection, UnoCard drawCard, UnoCardColour wildColour ) throws Exception {
 
         // Checks if card selected matches the colour from wildColour
-        if(drawCard.getColour() == CardColour.WILD || drawCard.getColour() == CardColour.WILD_FOUR){
+        if(drawCard.getColour() == UnoCardColour.WILD || drawCard.getColour() == UnoCardColour.WILD_FOUR){
             if(cardSelection.getColour().equals(wildColour)) {}
             //case when player draws a another wild card
-            else if (cardSelection.getColour() == CardColour.WILD || cardSelection.getColour() == CardColour.WILD_FOUR) {}
+            else if (cardSelection.getColour() == UnoCardColour.WILD || cardSelection.getColour() == UnoCardColour.WILD_FOUR) {}
             else {
                 throw new Exception("The Card is not valid");
             }
@@ -26,7 +26,7 @@ public class utils {
         else if (cardSelection.getValue().equals(drawCard.getValue())) {}
 
         // player puts down a WildCard
-        else if (cardSelection.getColour() == CardColour.WILD || cardSelection.getColour() == CardColour.WILD_FOUR) {}
+        else if (cardSelection.getColour() == UnoCardColour.WILD || cardSelection.getColour() == UnoCardColour.WILD_FOUR) {}
 
         else throw new Exception("The Card is not valid");
 
@@ -37,7 +37,7 @@ public class utils {
 
     }
 
-    public static CardColour askPlayerWildColour(Player player) {
+    public static UnoCardColour askPlayerWildColour(Player player) {
 
         int inputUser = 0;
         Scanner input = new Scanner(System.in);
@@ -47,10 +47,10 @@ public class utils {
                 System.out.println("Player "+ player.getName() + " plays.");
                 System.out.println("The Card is Wild");
                 System.out.println("Please enter a Colour to play: ");
-                System.out.println("1. "+ CardColour.BLUE.toString());
-                System.out.println("2. "+ CardColour.GREEN.toString());
-                System.out.println("3. "+ CardColour.RED.toString());
-                System.out.println("4. "+ CardColour.YELLOW.toString());
+                System.out.println("1. "+ UnoCardColour.BLUE.toString());
+                System.out.println("2. "+ UnoCardColour.GREEN.toString());
+                System.out.println("3. "+ UnoCardColour.RED.toString());
+                System.out.println("4. "+ UnoCardColour.YELLOW.toString());
                 System.out.print("Your option: ");
                 inputUser = input.nextInt();
 
@@ -59,10 +59,10 @@ public class utils {
                 }
 
                 switch (inputUser){
-                    case 1: return CardColour.BLUE;
-                    case 2: return CardColour.GREEN;
-                    case 3: return CardColour.RED;
-                    case 4: return CardColour.YELLOW;
+                    case 1: return UnoCardColour.BLUE;
+                    case 2: return UnoCardColour.GREEN;
+                    case 3: return UnoCardColour.RED;
+                    case 4: return UnoCardColour.YELLOW;
                 }
             }
 
@@ -75,12 +75,12 @@ public class utils {
         return null;
     }
 
-    public static boolean cardCanPlay(Card card, Card drawCard, CardColour wildColour){
+    public static boolean cardCanPlay(UnoCard card, UnoCard drawCard, UnoCardColour wildColour){
         // Checks if card selected matches the colour from wildColour
-        if(drawCard.getColour() == CardColour.WILD || drawCard.getColour() == CardColour.WILD_FOUR){
+        if(drawCard.getColour() == UnoCardColour.WILD || drawCard.getColour() == UnoCardColour.WILD_FOUR){
             if(card.getColour().equals(wildColour)) {return true;}
             //case when player draws a another wild card
-            else if (card.getColour() == CardColour.WILD || card.getColour() == CardColour.WILD_FOUR) {return true;}
+            else if (card.getColour() == UnoCardColour.WILD || card.getColour() == UnoCardColour.WILD_FOUR) {return true;}
             else {
                 return false;
             }
@@ -92,7 +92,7 @@ public class utils {
         else if (card.getValue().equals(drawCard.getValue())) {return true;}
 
         // player puts down a WildCard
-        else if (card.getColour() == CardColour.WILD || card.getColour() == CardColour.WILD_FOUR) {return true;}
+        else if (card.getColour() == UnoCardColour.WILD || card.getColour() == UnoCardColour.WILD_FOUR) {return true;}
 
     return false;
     }

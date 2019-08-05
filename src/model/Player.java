@@ -7,7 +7,7 @@ public class Player {
     
     private String name;
     private int points;
-    private ArrayList<Card> playerCards;
+    private ArrayList<UnoCard> playerCards;
     private String type;
 
     public Player(String name, String type) {
@@ -23,7 +23,7 @@ public class Player {
 
     public int calculatePoints(){
         int cardPoints = 0;
-        for(Card card:playerCards){
+        for(UnoCard card:playerCards){
             cardPoints = cardPoints + card.getCardPoints();
         }
         return cardPoints;
@@ -46,20 +46,20 @@ public class Player {
         return name + " " + points + "\n";
     }
 
-    public void receiveCard(Card card) {
+    public void receiveCard(UnoCard card) {
         playerCards.add(card);
     }
 
     
     public String showCards() {
         String result = "";
-        for(Card card : playerCards){
+        for(UnoCard card : playerCards){
             result += card.toString() +" - ";
         }
         return result;
     }
 
-    public ArrayList<Card> getPlayerCards(){
+    public ArrayList<UnoCard> getPlayerCards(){
         return playerCards;
     }
     
@@ -69,7 +69,7 @@ public class Player {
     }
     
     //TODO: cohesion -- verificar esta funcion. 
-    public void play(Card card, DiscardPile discardPile){
+    public void play(UnoCard card, DiscardPile discardPile){
         discardPile.addCard(playerCards.remove(playerCards.indexOf(card)));
     }
 

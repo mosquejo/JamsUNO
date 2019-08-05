@@ -68,7 +68,7 @@ public class Test_Deck {
     public void testDealCard() {
         System.out.println("dealCard");
         Deck instance = new Deck();
-        Card result = instance.dealCard();
+        UnoCard result = instance.dealCard();
         assertEquals(instance.getDeck().size(), 107);
     }
 

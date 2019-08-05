@@ -5,7 +5,7 @@ import java.util.Stack;
 
 public class DrawPile {
     
-    private Stack<Card> drawPile;
+    private Stack<UnoCard> drawPile;
 
     public DrawPile() {
         drawPile = new Stack<>();
@@ -14,29 +14,29 @@ public class DrawPile {
     public DrawPile(Deck deck){
         drawPile = new Stack<>();
         while (!deck.getDeck().isEmpty()) {
-            Card tempCard = (Card)deck.getDeck().remove(deck.getDeck().size()-1);
+            UnoCard tempCard = (UnoCard)deck.getDeck().remove(deck.getDeck().size()-1);
             drawPile.push(tempCard);
         }
     }
 
-    public void addCard(Card card) {
+    public void addCard(UnoCard card) {
         drawPile.push(card);
     }
 
-    public Card peek() {
+    public UnoCard peek() {
         return drawPile.peek();
     }
 
-    public Stack<Card> getDrawPile() {
+    public Stack<UnoCard> getDrawPile() {
         return drawPile;
     }
     
-    public Card drawCard(DiscardPile discardPile){
+    public UnoCard drawCard(DiscardPile discardPile){
         if(drawPile.isEmpty()){
-            Card card = discardPile.drawCard();
+            UnoCard card = discardPile.drawCard();
             discardPile.shuffle();
             while(!discardPile.getDiscardPile().isEmpty()) {
-                Card tempCard = discardPile.drawCard();
+                UnoCard tempCard = discardPile.drawCard();
                 drawPile.push(tempCard);
             }
             discardPile.addCard(card);

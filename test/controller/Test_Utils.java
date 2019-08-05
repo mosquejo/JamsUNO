@@ -5,9 +5,9 @@
  */
 package controller;
 
-import model.Card;
-import model.CardColour;
-import model.CardValue;
+import model.UnoCard;
+import model.UnoCardColour;
+import model.UnoCardValue;
 import model.Player;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -49,9 +49,9 @@ public class Test_Utils {
     @Test(expected = Exception.class)
     public void testCardSelectionIsValid_FALSE() throws Exception {
         System.out.println("cardSelectionIsValid not valid");
-        Card cardSelection = new Card(CardColour.RED, CardValue.TWO);
-        Card drawCard = new Card(CardColour.BLUE, CardValue.ONE);
-        CardColour wildColour = CardColour.BLUE;
+        UnoCard cardSelection = new UnoCard(UnoCardColour.RED, UnoCardValue.TWO);
+        UnoCard drawCard = new UnoCard(UnoCardColour.BLUE, UnoCardValue.ONE);
+        UnoCardColour wildColour = UnoCardColour.BLUE;
         utils.cardSelectionIsValid(cardSelection, drawCard, wildColour);
        
     }
@@ -62,9 +62,9 @@ public class Test_Utils {
     @Test
     public void testCardSelectionIsValid_TRUE() throws Exception {
         System.out.println("cardSelectionIsValid not valid");
-        Card cardSelection = new Card(CardColour.BLUE, CardValue.TWO);
-        Card drawCard = new Card(CardColour.BLUE, CardValue.ONE);
-        CardColour wildColour = CardColour.BLUE;
+        UnoCard cardSelection = new UnoCard(UnoCardColour.BLUE, UnoCardValue.TWO);
+        UnoCard drawCard = new UnoCard(UnoCardColour.BLUE, UnoCardValue.ONE);
+        UnoCardColour wildColour = UnoCardColour.BLUE;
         utils.cardSelectionIsValid(cardSelection, drawCard, wildColour);
     }
 
@@ -74,9 +74,9 @@ public class Test_Utils {
     @Test
     public void testCardCanPlay_TRUE() {
         System.out.println("cardCanPlay TRUE COLOUR");
-        Card cardSelection = new Card(CardColour.BLUE, CardValue.TWO);
-        Card drawCard = new Card(CardColour.BLUE, CardValue.ONE);
-        CardColour wildColour = CardColour.BLUE;
+        UnoCard cardSelection = new UnoCard(UnoCardColour.BLUE, UnoCardValue.TWO);
+        UnoCard drawCard = new UnoCard(UnoCardColour.BLUE, UnoCardValue.ONE);
+        UnoCardColour wildColour = UnoCardColour.BLUE;
         boolean result = utils.cardCanPlay(cardSelection, drawCard, wildColour);
         assertEquals(true, result);
     }
@@ -87,9 +87,9 @@ public class Test_Utils {
     @Test
     public void testCardCanPlay_FALSE() {
         System.out.println("cardCanPlay FALSE COLOUR");
-        Card cardSelection = new Card(CardColour.RED, CardValue.TWO);
-        Card drawCard = new Card(CardColour.BLUE, CardValue.ONE);
-        CardColour wildColour = CardColour.BLUE;
+        UnoCard cardSelection = new UnoCard(UnoCardColour.RED, UnoCardValue.TWO);
+        UnoCard drawCard = new UnoCard(UnoCardColour.BLUE, UnoCardValue.ONE);
+        UnoCardColour wildColour = UnoCardColour.BLUE;
         boolean result = utils.cardCanPlay(cardSelection, drawCard, wildColour);
         assertEquals(false, result);
     }
@@ -100,9 +100,9 @@ public class Test_Utils {
     @Test
     public void testCardCanPlay_TRUE_VALUE() {
         System.out.println("cardCanPlay TRUE VALUE");
-        Card cardSelection = new Card(CardColour.RED, CardValue.TWO);
-        Card drawCard = new Card(CardColour.BLUE, CardValue.TWO);
-        CardColour wildColour = CardColour.BLUE;
+        UnoCard cardSelection = new UnoCard(UnoCardColour.RED, UnoCardValue.TWO);
+        UnoCard drawCard = new UnoCard(UnoCardColour.BLUE, UnoCardValue.TWO);
+        UnoCardColour wildColour = UnoCardColour.BLUE;
         boolean result = utils.cardCanPlay(cardSelection, drawCard, wildColour);
         assertEquals(true, result);
     }
@@ -113,9 +113,9 @@ public class Test_Utils {
     @Test
     public void testCardCanPlay_FALSE_VALUE() {
         System.out.println("cardCanPlay FALSE VALUE");
-        Card cardSelection = new Card(CardColour.RED, CardValue.TWO);
-        Card drawCard = new Card(CardColour.BLUE, CardValue.THREE);
-        CardColour wildColour = CardColour.BLUE;
+        UnoCard cardSelection = new UnoCard(UnoCardColour.RED, UnoCardValue.TWO);
+        UnoCard drawCard = new UnoCard(UnoCardColour.BLUE, UnoCardValue.THREE);
+        UnoCardColour wildColour = UnoCardColour.BLUE;
         boolean result = utils.cardCanPlay(cardSelection, drawCard, wildColour);
         assertEquals(false, result);
     }
@@ -126,9 +126,9 @@ public class Test_Utils {
     @Test
     public void testCardCanPlay_WILD() {
         System.out.println("cardCanPlay WILD");
-        Card cardSelection = new Card(CardColour.WILD, CardValue.ONE);
-        Card drawCard = new Card(CardColour.BLUE, CardValue.THREE);
-        CardColour wildColour = CardColour.BLUE;
+        UnoCard cardSelection = new UnoCard(UnoCardColour.WILD, UnoCardValue.ONE);
+        UnoCard drawCard = new UnoCard(UnoCardColour.BLUE, UnoCardValue.THREE);
+        UnoCardColour wildColour = UnoCardColour.BLUE;
         boolean result = utils.cardCanPlay(cardSelection, drawCard, wildColour);
         assertEquals(true, result);
     }

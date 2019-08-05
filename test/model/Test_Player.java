@@ -48,8 +48,8 @@ public class Test_Player {
     public void testCalculatePoints() {
         System.out.println("Calculate Points");
         Player player = new Player("player1", "user");
-        player.receiveCard(new Card(CardColour.BLUE, CardValue.ONE));
-        player.receiveCard(new Card(CardColour.BLUE, CardValue.TWO));
+        player.receiveCard(new UnoCard(UnoCardColour.BLUE, UnoCardValue.ONE));
+        player.receiveCard(new UnoCard(UnoCardColour.BLUE, UnoCardValue.TWO));
         assertEquals(3, player.calculatePoints());
     }
 
@@ -61,8 +61,8 @@ public class Test_Player {
     public void testReceiveCard() {
         System.out.println("receiveCard");
         Player player = new Player("player1", "user");
-        player.receiveCard(new Card(CardColour.BLUE, CardValue.ONE));
-        player.receiveCard(new Card(CardColour.BLUE, CardValue.TWO));
+        player.receiveCard(new UnoCard(UnoCardColour.BLUE, UnoCardValue.ONE));
+        player.receiveCard(new UnoCard(UnoCardColour.BLUE, UnoCardValue.TWO));
         assertEquals(2, player.getPlayerCards().size());
 
     }
@@ -76,8 +76,8 @@ public class Test_Player {
         System.out.println("playCard int to DiscardPile");
         Player player = new Player("player1", "user");
         DiscardPile discardPile = new DiscardPile();
-        Card card1 = new Card(CardColour.BLUE, CardValue.ONE);
-        Card card2 = new Card(CardColour.BLUE, CardValue.TWO);
+        UnoCard card1 = new UnoCard(UnoCardColour.BLUE, UnoCardValue.ONE);
+        UnoCard card2 = new UnoCard(UnoCardColour.BLUE, UnoCardValue.TWO);
         player.receiveCard(card1);
         player.receiveCard(card2);
         player.play(2, discardPile);
@@ -94,8 +94,8 @@ public class Test_Player {
         System.out.println("playCard to DiscardPile");
         Player player = new Player("player1", "user");
         DiscardPile discardPile = new DiscardPile();
-        Card card1 = new Card(CardColour.BLUE, CardValue.ONE);
-        Card card2 = new Card(CardColour.BLUE, CardValue.TWO);
+        UnoCard card1 = new UnoCard(UnoCardColour.BLUE, UnoCardValue.ONE);
+        UnoCard card2 = new UnoCard(UnoCardColour.BLUE, UnoCardValue.TWO);
         player.receiveCard(card1);
         player.receiveCard(card2);
         player.play(card1, discardPile);
@@ -110,8 +110,8 @@ public class Test_Player {
     public void testWonGame_FALSE() {
         System.out.println("wonGame_TEST_FALSE");
         Player player = new Player("player1", "user");
-        player.receiveCard(new Card(CardColour.BLUE, CardValue.ONE));
-        player.receiveCard(new Card(CardColour.BLUE, CardValue.TWO));
+        player.receiveCard(new UnoCard(UnoCardColour.BLUE, UnoCardValue.ONE));
+        player.receiveCard(new UnoCard(UnoCardColour.BLUE, UnoCardValue.TWO));
         boolean result = player.wonGame();
         assertEquals(false, result);
     }

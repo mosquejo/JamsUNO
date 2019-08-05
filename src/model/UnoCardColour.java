@@ -1,6 +1,6 @@
 package model;
 
-public enum CardColour {
+public enum UnoCardColour {
 
     RED, YELLOW, GREEN, BLUE, WILD, WILD_FOUR;
 

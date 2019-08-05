@@ -6,8 +6,8 @@ import controller.Round;
 import controller.utils;
 import java.util.ArrayList;
 import java.util.Scanner;
-import model.Card;
-import model.CardColour;
+import model.UnoCard;
+import model.UnoCardColour;
 import model.DiscardPile;
 import model.DrawPile;
 import model.Player;
@@ -59,8 +59,8 @@ public class Tester {
     public static boolean playerPlays(Round round) {
 
         Player player = round.getCurrentPlayer();
-        Card drawCard = round.showDrawCard();
-        CardColour wildColour = round.getWildColour();
+        UnoCard drawCard = round.showDrawCard();
+        UnoCardColour wildColour = round.getWildColour();
         DrawPile drawPile = round.getDrawPile();
         DiscardPile discardPile = round.getDiscardPile();
 
@@ -74,20 +74,20 @@ public class Tester {
             System.out.println("Your cards:");
             System.out.println(player.showCards());
             System.out.println("The Draw Card is: " + drawCard.toString());
-            if (drawCard.getColour() == CardColour.WILD || drawCard.getColour() == CardColour.WILD_FOUR) {
+            if (drawCard.getColour() == UnoCardColour.WILD || drawCard.getColour() == UnoCardColour.WILD_FOUR) {
                 System.out.println("The Colour is " + wildColour.toString());
             }
 
-            ArrayList<Card> playCards = AgentUtils.getPlayableCards(player, drawCard, wildColour);
+            ArrayList<UnoCard> playCards = AgentUtils.getPlayableCards(player, drawCard, wildColour);
             switch (playCards.size()) {
                 case 0:
                     System.out.println("I dont have matching cards. I need to draw a card");
-                    Card card = drawPile.drawCard(discardPile);
+                    UnoCard card = drawPile.drawCard(discardPile);
                     player.receiveCard(card);
                     System.out.println("The card is " + card.toString());
                     if (utils.cardCanPlay(card, drawCard, wildColour)) {
                         System.out.println("Looks like I can play the card i just draw");
-                        if (card.getColour() == CardColour.WILD || card.getColour() == CardColour.WILD_FOUR) {
+                        if (card.getColour() == UnoCardColour.WILD || card.getColour() == UnoCardColour.WILD_FOUR) {
                             round.setWildColour(AgentUtils.askPlayerWildColour(player));
                         }
                         player.play(card, discardPile);
@@ -101,8 +101,8 @@ public class Tester {
                     break;
                 case 1: 
                     System.out.println("OK I think I have a Card");
-                    Card card1 = playCards.get(0);
-                    if (card1.getColour() == CardColour.WILD || card1.getColour() == CardColour.WILD_FOUR) {
+                    UnoCard card1 = playCards.get(0);
+                    if (card1.getColour() == UnoCardColour.WILD || card1.getColour() == UnoCardColour.WILD_FOUR) {
                             round.setWildColour(AgentUtils.askPlayerWildColour(player));
                         }
                         player.play(card1, discardPile);
@@ -111,8 +111,8 @@ public class Tester {
                     break; 
                 default:
                     System.out.println("OK I have multiple options");
-                    Card card2 = playCards.get(AgentUtils.randomCard(playCards));
-                    if (card2.getColour() == CardColour.WILD || card2.getColour() == CardColour.WILD_FOUR) {
+                    UnoCard card2 = playCards.get(AgentUtils.randomCard(playCards));
+                    if (card2.getColour() == UnoCardColour.WILD || card2.getColour() == UnoCardColour.WILD_FOUR) {
                             round.setWildColour(AgentUtils.askPlayerWildColour(player));
                         }
                         player.play(card2, discardPile);
@@ -128,7 +128,7 @@ public class Tester {
             System.out.println("Your cards:");
             System.out.println(player.showCards());
             System.out.println("The Draw Card is: " + drawCard.toString());
-            if (drawCard.getColour() == CardColour.WILD || drawCard.getColour() == CardColour.WILD_FOUR) {
+            if (drawCard.getColour() == UnoCardColour.WILD || drawCard.getColour() == UnoCardColour.WILD_FOUR) {
                 System.out.println("The Colour is " + wildColour.toString());
             }
 
@@ -159,12 +159,12 @@ public class Tester {
                         try {
                             // todo: pending implemenentation to go back to menu
                             System.out.println("The Draw Card is: " + drawCard.toString());
-                            if (drawCard.getColour() == CardColour.WILD || drawCard.getColour() == CardColour.WILD_FOUR) {
+                            if (drawCard.getColour() == UnoCardColour.WILD || drawCard.getColour() == UnoCardColour.WILD_FOUR) {
                                 System.out.println("The Colour is " + wildColour.toString());
                             }
                             System.out.println("Your cards are:");
                             int counter = 1;
-                            for (Card card : player.getPlayerCards()) {
+                            for (UnoCard card : player.getPlayerCards()) {
                                 System.out.println(counter + ". " + card.toString());
                                 counter++;
                             }
@@ -177,7 +177,7 @@ public class Tester {
 
                             utils.cardSelectionIsValid(player.getPlayerCards().get(cardSelection - 1), drawCard, wildColour);
 
-                            if (player.getPlayerCards().get(cardSelection - 1).getColour() == CardColour.WILD || player.getPlayerCards().get(cardSelection - 1).getColour() == CardColour.WILD_FOUR) {
+                            if (player.getPlayerCards().get(cardSelection - 1).getColour() == UnoCardColour.WILD || player.getPlayerCards().get(cardSelection - 1).getColour() == UnoCardColour.WILD_FOUR) {
                                 round.setWildColour(utils.askPlayerWildColour(player));
 
                             }
@@ -193,7 +193,7 @@ public class Tester {
                     } while (continueInput2);
                     break;
                 case 2:
-                    Card card = drawPile.drawCard(discardPile);
+                    UnoCard card = drawPile.drawCard(discardPile);
                     player.receiveCard(card);
                     System.out.println("The card is " + card.toString());
                     int userInput2 = 0;
@@ -218,7 +218,7 @@ public class Tester {
 
                         switch (userInput2) {
                             case 1:
-                                if (card.getColour() == CardColour.WILD || card.getColour() == CardColour.WILD_FOUR) {
+                                if (card.getColour() == UnoCardColour.WILD || card.getColour() == UnoCardColour.WILD_FOUR) {
                                     round.setWildColour(utils.askPlayerWildColour(player));
                                 }
                                 player.play(card, discardPile);

@@ -1,9 +1,9 @@
 package controller;
 
 import java.util.Collections;
-import model.Card;
-import model.CardColour;
-import model.CardValue;
+import model.UnoCard;
+import model.UnoCardColour;
+import model.UnoCardValue;
 import model.Deck;
 import model.DiscardPile;
 import model.DrawPile;
@@ -16,7 +16,7 @@ public class Round {
     private DiscardPile discardPile;
     private DrawPile drawPile;
     private boolean continuePlaying;
-    private CardColour wildColour;          // to define the Colour when a Wild card is played.
+    private UnoCardColour wildColour;          // to define the Colour when a Wild card is played.
 
     public Round(Player dealer, MyLinkedList players) {
         playerList = players;
@@ -44,11 +44,11 @@ public class Round {
         return continuePlaying;
     }
 
-    public CardColour getWildColour() {
+    public UnoCardColour getWildColour() {
         return wildColour;
     }
 
-    public void setWildColour(CardColour wildColour) {
+    public void setWildColour(UnoCardColour wildColour) {
         this.wildColour = wildColour;
     }
 
@@ -70,7 +70,7 @@ public class Round {
         drawPile = new DrawPile(this.deck);
     }
 
-    public Card showDrawCard() {
+    public UnoCard showDrawCard() {
         return discardPile.peekCard();
     }
 
@@ -87,12 +87,12 @@ public class Round {
     }
 
     public void checkFinalCard() {
-        if (showDrawCard().getValue() == CardValue.DRAW_TWO) {
+        if (showDrawCard().getValue() == UnoCardValue.DRAW_TWO) {
             getPlayerList().nextNode();
             for (int i = 0; i < 2; i++) {
                 getCurrentPlayer().receiveCard(drawPile.drawCard(discardPile));
             }
-        } else if (showDrawCard().getColour() == CardColour.WILD_FOUR) {
+        } else if (showDrawCard().getColour() == UnoCardColour.WILD_FOUR) {
             getPlayerList().nextNode();
             for (int i = 0; i < 4; i++) {
                 getCurrentPlayer().receiveCard(drawPile.drawCard(discardPile));
@@ -101,18 +101,18 @@ public class Round {
     }
 
     public void checkCard() {
-        if (showDrawCard().getValue() == CardValue.SKIP) {
+        if (showDrawCard().getValue() == UnoCardValue.SKIP) {
             getPlayerList().skip();
-        } else if (showDrawCard().getValue() == CardValue.REVERSE) {
+        } else if (showDrawCard().getValue() == UnoCardValue.REVERSE) {
             getPlayerList().reverse();
             getPlayerList().nextNode();
-        } else if (showDrawCard().getValue() == CardValue.DRAW_TWO) {
+        } else if (showDrawCard().getValue() == UnoCardValue.DRAW_TWO) {
             getPlayerList().nextNode();
             for (int i = 0; i < 2; i++) {
                 getCurrentPlayer().receiveCard(drawPile.drawCard(discardPile));
             }
             getPlayerList().nextNode();
-        } else if (showDrawCard().getColour() == CardColour.WILD_FOUR) {
+        } else if (showDrawCard().getColour() == UnoCardColour.WILD_FOUR) {
             getPlayerList().nextNode();
             for (int i = 0; i < 4; i++) {
                 getCurrentPlayer().receiveCard(drawPile.drawCard(discardPile));
@@ -124,17 +124,17 @@ public class Round {
     }
 
     public void checkFirstDrawCard() {
-        if (showDrawCard().getValue() == CardValue.SKIP) {
+        if (showDrawCard().getValue() == UnoCardValue.SKIP) {
             getPlayerList().skip();
-        } else if (showDrawCard().getValue() == CardValue.REVERSE) {
+        } else if (showDrawCard().getValue() == UnoCardValue.REVERSE) {
             getPlayerList().reverse();
-        } else if (showDrawCard().getValue() == CardValue.DRAW_TWO) {
+        } else if (showDrawCard().getValue() == UnoCardValue.DRAW_TWO) {
             getPlayerList().nextNode();
             for (int i = 0; i < 2; i++) {
                 getCurrentPlayer().receiveCard(drawPile.drawCard(discardPile));
             }
             getPlayerList().nextNode();
-        } else if (this.showDrawCard().getColour() == CardColour.WILD) {
+        } else if (this.showDrawCard().getColour() == UnoCardColour.WILD) {
             getPlayerList().nextNode();
             if (this.getWildColour() == null) {
                 if (getCurrentPlayer().getType().equals("user")) {
@@ -143,7 +143,7 @@ public class Round {
                     this.setWildColour(AgentUtils.askPlayerWildColour(getCurrentPlayer()));
                 }
             }
-        } else if (showDrawCard().getColour() == CardColour.WILD_FOUR) {
+        } else if (showDrawCard().getColour() == UnoCardColour.WILD_FOUR) {
             //todo: este sout no debe ir aca para una aplicacion GUI
             System.out.println("Reshuffeling Discard Pile");
             drawPile.addCard(discardPile.drawCard());

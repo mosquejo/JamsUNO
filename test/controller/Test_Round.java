@@ -5,9 +5,9 @@
  */
 package controller;
 
-import model.Card;
-import model.CardColour;
-import model.CardValue;
+import model.UnoCard;
+import model.UnoCardColour;
+import model.UnoCardValue;
 import model.DiscardPile;
 import model.DrawPile;
 import model.Player;
@@ -56,9 +56,9 @@ public class Test_Round {
         game.addPlayer("Player2", "agent");
         game.setDealer(game.getPlayer(0));
         Round instance = new Round(game.getDealer(), game.getPlayerList());
-        game.getPlayer(0).receiveCard(new Card(CardColour.WILD_FOUR, CardValue.ONE));
-        game.getPlayer(0).receiveCard(new Card(CardColour.WILD, CardValue.ONE));
-        game.getPlayer(0).receiveCard(new Card(CardColour.BLUE, CardValue.NINE));
+        game.getPlayer(0).receiveCard(new UnoCard(UnoCardColour.WILD_FOUR, UnoCardValue.ONE));
+        game.getPlayer(0).receiveCard(new UnoCard(UnoCardColour.WILD, UnoCardValue.ONE));
+        game.getPlayer(0).receiveCard(new UnoCard(UnoCardColour.BLUE, UnoCardValue.NINE));
         int result = instance.calculatePoints(game.getPlayer(1));
         assertEquals(109, result);
     }
@@ -145,7 +145,7 @@ public class Test_Round {
         instance.createDrawPile();
         instance.createDiscardPile();
         instance.getPlayerList().nextNode();
-        instance.getDiscardPile().addCard(new Card(CardColour.BLUE, CardValue.DRAW_TWO));
+        instance.getDiscardPile().addCard(new UnoCard(UnoCardColour.BLUE, UnoCardValue.DRAW_TWO));
         instance.checkFinalCard();
         assertEquals(9, game.getPlayer(1).getPlayerCards().size());
     }
@@ -167,7 +167,7 @@ public class Test_Round {
         instance.createDrawPile();
         instance.createDiscardPile();
         instance.getPlayerList().nextNode();
-        instance.getDiscardPile().addCard(new Card(CardColour.WILD_FOUR, CardValue.ONE));
+        instance.getDiscardPile().addCard(new UnoCard(UnoCardColour.WILD_FOUR, UnoCardValue.ONE));
         instance.checkFinalCard();
         assertEquals(11, game.getPlayer(1).getPlayerCards().size());
     }
@@ -188,7 +188,7 @@ public class Test_Round {
         instance.createDrawPile();
         instance.createDiscardPile();
         instance.getPlayerList().nextNode();
-        instance.getDiscardPile().addCard(new Card(CardColour.BLUE, CardValue.SKIP));
+        instance.getDiscardPile().addCard(new UnoCard(UnoCardColour.BLUE, UnoCardValue.SKIP));
         instance.checkCard();
         assertEquals("Player3", instance.getCurrentPlayer().getName());
     }
@@ -210,7 +210,7 @@ public class Test_Round {
         instance.createDrawPile();
         instance.createDiscardPile();
         instance.getPlayerList().nextNode();
-        instance.getDiscardPile().addCard(new Card(CardColour.BLUE, CardValue.REVERSE));
+        instance.getDiscardPile().addCard(new UnoCard(UnoCardColour.BLUE, UnoCardValue.REVERSE));
         instance.checkCard();
         assertEquals("Player4", instance.getCurrentPlayer().getName());
     }
@@ -231,7 +231,7 @@ public class Test_Round {
         instance.createDrawPile();
         instance.createDiscardPile();
         instance.getPlayerList().nextNode();
-        instance.getDiscardPile().addCard(new Card(CardColour.BLUE, CardValue.DRAW_TWO));
+        instance.getDiscardPile().addCard(new UnoCard(UnoCardColour.BLUE, UnoCardValue.DRAW_TWO));
         instance.checkCard();
         assertEquals("Player3", instance.getCurrentPlayer().getName());
         assertEquals(9, game.getPlayer(1).getPlayerCards().size());
@@ -253,7 +253,7 @@ public class Test_Round {
         instance.createDrawPile();
         instance.createDiscardPile();
         instance.getPlayerList().nextNode();
-        instance.getDiscardPile().addCard(new Card(CardColour.WILD_FOUR, CardValue.ONE));
+        instance.getDiscardPile().addCard(new UnoCard(UnoCardColour.WILD_FOUR, UnoCardValue.ONE));
         instance.checkCard();
         assertEquals("Player3", instance.getCurrentPlayer().getName());
         assertEquals(11, game.getPlayer(1).getPlayerCards().size());
@@ -277,7 +277,7 @@ public class Test_Round {
         instance.createDrawPile();
         instance.createDiscardPile();
         instance.getPlayerList().nextNode();
-        instance.getDiscardPile().addCard(new Card(CardColour.BLUE, CardValue.SKIP));
+        instance.getDiscardPile().addCard(new UnoCard(UnoCardColour.BLUE, UnoCardValue.SKIP));
         instance.checkFirstDrawCard();
         assertEquals("Player3", instance.getCurrentPlayer().getName());
 
@@ -301,7 +301,7 @@ public class Test_Round {
         instance.createDrawPile();
         instance.createDiscardPile();
         instance.getPlayerList().nextNode();
-        instance.getDiscardPile().addCard(new Card(CardColour.BLUE, CardValue.SKIP));
+        instance.getDiscardPile().addCard(new UnoCard(UnoCardColour.BLUE, UnoCardValue.SKIP));
         instance.checkFirstDrawCard();
         assertEquals("Player2", instance.getCurrentPlayer().getName());
 
@@ -325,7 +325,7 @@ public class Test_Round {
         instance.createDrawPile();
         instance.createDiscardPile();
         instance.getPlayerList().nextNode();
-        instance.getDiscardPile().addCard(new Card(CardColour.BLUE, CardValue.SKIP));
+        instance.getDiscardPile().addCard(new UnoCard(UnoCardColour.BLUE, UnoCardValue.SKIP));
         instance.checkFirstDrawCard();
         assertEquals("Player1", instance.getCurrentPlayer().getName());
 
@@ -349,7 +349,7 @@ public class Test_Round {
         instance.createDrawPile();
         instance.createDiscardPile();
         instance.getPlayerList().nextNode();
-        instance.getDiscardPile().addCard(new Card(CardColour.BLUE, CardValue.REVERSE));
+        instance.getDiscardPile().addCard(new UnoCard(UnoCardColour.BLUE, UnoCardValue.REVERSE));
         instance.checkFirstDrawCard();
         assertEquals("Player1", instance.getCurrentPlayer().getName());
 
@@ -373,7 +373,7 @@ public class Test_Round {
         instance.createDrawPile();
         instance.createDiscardPile();
         instance.getPlayerList().nextNode();
-        instance.getDiscardPile().addCard(new Card(CardColour.BLUE, CardValue.REVERSE));
+        instance.getDiscardPile().addCard(new UnoCard(UnoCardColour.BLUE, UnoCardValue.REVERSE));
         instance.checkFirstDrawCard();
         assertEquals("Player4", instance.getCurrentPlayer().getName());
 
@@ -397,7 +397,7 @@ public class Test_Round {
         instance.createDrawPile();
         instance.createDiscardPile();
         instance.getPlayerList().nextNode();
-        instance.getDiscardPile().addCard(new Card(CardColour.BLUE, CardValue.DRAW_TWO));
+        instance.getDiscardPile().addCard(new UnoCard(UnoCardColour.BLUE, UnoCardValue.DRAW_TWO));
         instance.checkFirstDrawCard();
         assertEquals(9, game.getPlayer(1).getPlayerCards().size());
         assertEquals("Player3", instance.getCurrentPlayer().getName());
@@ -421,9 +421,9 @@ public class Test_Round {
         instance.createDrawPile();
         instance.createDiscardPile();
         instance.getPlayerList().nextNode();
-        instance.getDiscardPile().addCard(new Card(CardColour.WILD_FOUR, CardValue.ONE));
+        instance.getDiscardPile().addCard(new UnoCard(UnoCardColour.WILD_FOUR, UnoCardValue.ONE));
         instance.checkFirstDrawCard();
-        assertTrue(instance.getDiscardPile().peekCard().getColour() != CardColour.WILD_FOUR);
+        assertTrue(instance.getDiscardPile().peekCard().getColour() != UnoCardColour.WILD_FOUR);
     }
 
     /**

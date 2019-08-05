@@ -1,6 +1,6 @@
 package model;
 
-public enum CardValue {
+public enum UnoCardValue {
     
     ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, SKIP, REVERSE, DRAW_TWO;
 	

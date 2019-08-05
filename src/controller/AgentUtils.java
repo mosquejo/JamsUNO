@@ -2,16 +2,16 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.Random;
-import model.Card;
-import model.CardColour;
+import model.UnoCard;
+import model.UnoCardColour;
 import model.Player;
 
 public class AgentUtils {
 
-    public static ArrayList<Card> getPlayableCards(Player player, Card drawCard, CardColour wildColour) {
-        ArrayList<Card> playCards = new ArrayList<>();
-        for (Card card : player.getPlayerCards()) {
-            if (drawCard.getColour() == CardColour.WILD || drawCard.getColour() == CardColour.WILD_FOUR) {
+    public static ArrayList<UnoCard> getPlayableCards(Player player, UnoCard drawCard, UnoCardColour wildColour) {
+        ArrayList<UnoCard> playCards = new ArrayList<>();
+        for (UnoCard card : player.getPlayerCards()) {
+            if (drawCard.getColour() == UnoCardColour.WILD || drawCard.getColour() == UnoCardColour.WILD_FOUR) {
                 if (card.getColour().equals(wildColour)) {
                     playCards.add(card);
                 }
@@ -19,29 +19,29 @@ public class AgentUtils {
                 playCards.add(card);
             } else if (card.getValue().equals(drawCard.getValue())) {
                 playCards.add(card);
-            } else if (card.getColour() == CardColour.WILD || card.getColour() == CardColour.WILD_FOUR) {
+            } else if (card.getColour() == UnoCardColour.WILD || card.getColour() == UnoCardColour.WILD_FOUR) {
                 playCards.add(card);
             }
         }
         return playCards;
     }
     
-    public static CardColour askPlayerWildColour(Player player){
+    public static UnoCardColour askPlayerWildColour(Player player){
         Random random = new Random();
         switch (random.nextInt(4)){
-            case 0: return CardColour.BLUE;
-            case 1: return CardColour.GREEN;
-            case 2: return CardColour.RED;
-            case 3: return CardColour.YELLOW;
+            case 0: return UnoCardColour.BLUE;
+            case 1: return UnoCardColour.GREEN;
+            case 2: return UnoCardColour.RED;
+            case 3: return UnoCardColour.YELLOW;
         }
         
-        for(Card card : player.getPlayerCards()) {
+        for(UnoCard card : player.getPlayerCards()) {
             //TODO: to implement something here
         }
         return null;
     }
     
-    public static int randomCard(ArrayList<Card> playCards) {
+    public static int randomCard(ArrayList<UnoCard> playCards) {
         Random random = new Random();
         int randomCard = random.nextInt(playCards.size());
         return randomCard;
