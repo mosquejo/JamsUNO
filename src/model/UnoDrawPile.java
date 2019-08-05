@@ -1,9 +1,11 @@
 
 package model;
 
+import interfaces.Deck;
+import java.util.Collections;
 import java.util.Stack;
 
-public class UnoDrawPile {
+public class UnoDrawPile implements Deck{
     
     private Stack<UnoCard> drawPile;
 
@@ -23,7 +25,8 @@ public class UnoDrawPile {
         drawPile.push(card);
     }
 
-    public UnoCard peek() {
+    @Override
+    public UnoCard peekCard() {
         return drawPile.peek();
     }
 
@@ -43,6 +46,21 @@ public class UnoDrawPile {
         }
         return drawPile.pop();
            
+    }
+    
+    @Override
+    public UnoCard drawCard() {
+        return drawPile.pop();
+    }
+    
+    @Override
+    public void shuffle() {
+        Collections.shuffle(drawPile);
+    }
+    
+    @Override
+    public void clear() {
+        drawPile.clear();
     }
     
 }

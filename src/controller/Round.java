@@ -56,7 +56,7 @@ public class Round {
         //todo: Depending on the rules, 7 must be changed to number in changes of the rules.
         for (int i = 0; i < 7; i++) {
             for (Player player : playerList) {
-                player.receiveCard(deck.dealCard());
+                player.receiveCard(deck.drawCard());
             }
         }
     }
