@@ -1,9 +1,10 @@
 package model;
 
+import interfaces.Deck;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class UnoDeck {
+public class UnoDeck implements Deck{
     
     private final ArrayList<UnoCard> deck = new ArrayList<>();
 
@@ -29,24 +30,29 @@ public class UnoDeck {
             deck.add(new UnoCard(UnoCardColour.WILD_FOUR,UnoCardValue.ONE));
         }
     }
-
-    public UnoCard getCard() {
+    
+    
+    @Override
+    public UnoCard peekCard() {
         return deck.get(0);
     }
 
-    public UnoCard getCard(int index) {
+    public UnoCard peekCard(int index) {
         return deck.get(index);
     }
 
+    @Override
     public void shuffle() {
         Collections.shuffle(this.deck);
     }
 
-    public UnoCard dealCard() {
+    @Override
+    public UnoCard drawCard() {
         
         return deck.remove(0);
     }
 
+    @Override
     public void clear() {
         deck.clear();
     }
